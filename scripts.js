@@ -12,12 +12,17 @@ const fetchMovies = async () => {
             const movieCard = document.createElement("div");
             movieCard.classList.add("movie-card");
 
+            // Embed the Archive.org player directly
+            const movieEmbedUrl = `https://archive.org/embed/${movie.identifier}`;
+
             // Movie poster and details
             movieCard.innerHTML = `
                 <img src="https://archive.org/services/img/${movie.identifier}" alt="${movie.title}">
                 <div class="details">
                     <h3>${movie.title}</h3>
-                    <p>Watch on <a href="https://archive.org/details/${movie.identifier}" target="_blank" style="color: #1db954;">Archive.org</a></p>
+                    <div class="movie-player">
+                        <iframe src="${movieEmbedUrl}" width="100%" height="400" frameborder="0" allowfullscreen></iframe>
+                    </div>
                 </div>
             `;
 
